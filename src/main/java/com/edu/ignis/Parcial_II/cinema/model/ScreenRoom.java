@@ -16,15 +16,15 @@ public class ScreenRoom implements Serializable {
     this.movie = movie;
     this.room = room;
   }
-  
+
   public int getNumber() {
     return number;
   }
-  
+
   public String getMovie() {
     return movie;
   }
-  
+
   public String[][] getRoom() {
     return room;
   }
