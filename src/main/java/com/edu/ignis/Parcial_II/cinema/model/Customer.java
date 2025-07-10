@@ -8,40 +8,71 @@ public class Customer implements Serializable {
   private String email;
   private String passsword;
 
+  /** 
+   * Constructs a new Customer object with the specified name, email, and password.
+   * @param name the name of the customer
+   * @param email the email of the customer
+   * @param passsword the password of the customer
+   */
   public Customer(String name, String email, String passsword) {
     this.name = name;
     this.email = email;
     this.passsword = passsword;
-  }
+  } 
 
+  /**
+   * Retrieves the name of the customer.
+   * @return the name of the customer
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Retrieves the email of the customer.
+   * @return the email of the customer
+   */
   public String getEmail() {
     return email;
   }
 
-  private String getPass() {
+  /**
+   * Retrieves the password of the customer.
+   * @return the password of the customer
+   */
+  protected String getPass() {
     return passsword;
   }
 
+  /**
+   * Generates a hash code for the customer based on their email and password.
+   * @return the hash code for the customer
+   */
   @Override
   public int hashCode() {
     return Objects.hash(email, passsword);
   }
 
+  /**
+   * Determines whether this customer is equal to another object.
+   * @param obj the object to compare
+   * @return true if the objects are equal, false otherwise
+   */
   @Override
   public boolean equals(Object obj) {
     if (this == obj) return true;
     if (obj == null) return false;
     if (getClass() != obj.getClass()) return false;
     Customer other = (Customer) obj;
-    return Objects.equals(email, other.getEmail()) &&
-      Objects.equals(passsword, other.getPass()
+    return Objects.equals(name, other.getName()) &&
+    Objects.equals(email, other.getEmail()
     );
   }
 
+  /**
+   * Returns a string representation of the customer.
+   * @return a string representation of the customer
+   */
   @Override
   public String toString() {
     return "Customer [name: " + name + ", email: " + email + "]";
