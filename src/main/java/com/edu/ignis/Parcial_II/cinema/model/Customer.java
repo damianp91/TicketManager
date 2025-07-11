@@ -40,8 +40,12 @@ public class Customer implements Serializable {
    * Retrieves the password of the customer.
    * @return the password of the customer
    */
-  protected String getPass() {
+  private String getPass() {
     return passsword;
+  }
+
+  public boolean passwordOk(String pass) {
+    return getPass().equals(pass);
   }
 
   /**
@@ -50,7 +54,7 @@ public class Customer implements Serializable {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(email, passsword);
+    return Objects.hash(name, email);
   }
 
   /**

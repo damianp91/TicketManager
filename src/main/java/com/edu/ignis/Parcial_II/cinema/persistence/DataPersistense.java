@@ -9,14 +9,14 @@ import java.io.ObjectOutputStream;
 import com.edu.ignis.Parcial_II.cinema.model.Cinema;
 
 public class DataPersistense {
-  private static final String ARCHIVO = "cine.ser";
+  private static final String FILE = "cine.ser";
 
   /**
    * Saves the Cinema object to a file using serialization.
    * @param cinema the Cinema object to be saved
    */
   public static void save(Cinema cinema) {
-    try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARCHIVO))) {
+    try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE))) {
       oos.writeObject(cinema);
     } catch (IOException e) {
       System.out.println("Error guardando estado: " + e.getMessage());
@@ -28,7 +28,7 @@ public class DataPersistense {
    * @return the Cinema object loaded from the file or a new Cinema object if an error occurs
    */
   public static Cinema load() {
-    try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ARCHIVO))) {
+    try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE))) {
       return (Cinema) ois.readObject();
     } catch (IOException | ClassNotFoundException e) {
       return new Cinema();

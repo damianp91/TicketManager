@@ -49,6 +49,13 @@ public class ScreenRoom implements Serializable {
     return seats[file][seat];
   }
 
+  public void setSeat(Seat seat, int file, int number) {
+    if (file >= 0 && file < seats.length && 
+        number >= 0 && number < seats[file].length) {
+      seats[file][number] = seat;
+    }
+  }
+
   /**
    * Displays the layout of the screen room, including rows and seats.
    * @return a string representation of the screen room layout

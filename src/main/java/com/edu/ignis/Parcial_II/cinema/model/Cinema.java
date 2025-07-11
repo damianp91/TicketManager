@@ -10,6 +10,7 @@ import java.util.List;
 public class Cinema implements Serializable {
   private List<ScreenRoom> rooms;
   private List<Ticket> tickets;
+  private List<Customer> customers;
 
   /**
    * Constructs a Cinema object with empty lists for screen rooms and tickets.
@@ -17,6 +18,7 @@ public class Cinema implements Serializable {
   public Cinema() {
     this.rooms = new ArrayList<>();
     this.tickets = new ArrayList<>();
+    this.customers = new ArrayList<>();
   }
 
   /** 
@@ -35,6 +37,10 @@ public class Cinema implements Serializable {
     return tickets;
   }
 
+  public List<Customer> getCustomers() {
+    return customers;
+  }
+
   /**
    * Adds a new screen room to the cinema.
    * @param room the ScreenRoom object to add
@@ -51,18 +57,22 @@ public class Cinema implements Serializable {
     tickets.add(ticket);
   }
 
+  public void addCustomer(Customer customer) {
+    customers.add(customer);
+  }
+
   /**
    * Finds a customer's ticket in the cinema by their email.
    * @param email the email of the customer to search for
    * @return the Ticket object associated with the customer, or null if not found
    */
-  public Ticket findCustomer(String email) {
-    Ticket ticket = null;
-    for (Ticket t : tickets) {
-      if(t.getCustomer().getEmail().equals(email)) {
-        ticket = t;
+  public Customer findCustomer(String email) {
+    Customer customer = null;
+    for (Customer c : customers) {
+      if(c.getEmail().equals(email)) {
+        customer = c;
       }
     }
-    return ticket;
+    return customer;
   }
 }
