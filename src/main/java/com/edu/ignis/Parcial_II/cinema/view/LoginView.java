@@ -9,6 +9,7 @@ import com.edu.ignis.Parcial_II.cinema.model.Customer;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -24,7 +25,7 @@ public class LoginView extends VBox {
     Label lbEmail = new Label("Email: ");
     TextField fieldEmail = new TextField();
     Label lbPassword = new Label("Password: ");
-    TextField fieldPassword = new TextField();
+    PasswordField fieldPassword = new PasswordField();
 
     // Buttoms
     Button btnLogin = new Button("Sign in");
@@ -36,9 +37,13 @@ public class LoginView extends VBox {
       String email = fieldEmail.getText();
       String pass = fieldPassword.getText();
       try {
+        if (email.isEmpty() || pass.isEmpty()) {
+          message.setText("Email and password required.");
+          return;
+        }
         Customer customer = LoginController.login(email, pass, cinema);
         message.setText("Welcome " + customer.getName());
-        stage.setScene(new Scene(new ScreenRoomView(stage, cinema, customer)));
+        stage.setScene(new Scene(new MenuView(stage, cinema, customer)));
       } catch (ErrorLoginException elx) {
         message.setText(elx.getMessage());
       }
@@ -49,6 +54,10 @@ public class LoginView extends VBox {
       String email = fieldEmail.getText();
       String pass = fieldPassword.getText();
       try {
+        if (email.isEmpty() || pass.isEmpty()) {
+          message.setText("Email and password required.");
+          return;
+        }
         LoginController.register(name, email, pass, cinema);
         message.setText("Succesful register.");
       } catch (ExistCustomerException ece) {

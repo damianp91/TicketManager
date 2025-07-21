@@ -1,5 +1,6 @@
 package com.edu.ignis.Parcial_II.cinema.persistence;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,10 +28,16 @@ public class DataPersistense {
    * Loads the Cinema object from a file using serialization.
    * @return the Cinema object loaded from the file or a new Cinema object if an error occurs
    */
-  public static Cinema load() {
+  public static Cinema load() throws IOException, ClassNotFoundException{
+    File f = new File(FILE);
+    if (!f.exists()) {
+      return new Cinema();
+    }
+
     try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE))) {
       return (Cinema) ois.readObject();
     } catch (IOException | ClassNotFoundException e) {
+      System.out.println("Error: file don't load: " + e.getMessage());
       return new Cinema();
     }
   }

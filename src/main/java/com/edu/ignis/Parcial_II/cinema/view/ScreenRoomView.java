@@ -4,6 +4,7 @@ import com.edu.ignis.Parcial_II.cinema.model.Cinema;
 import com.edu.ignis.Parcial_II.cinema.model.Customer;
 import com.edu.ignis.Parcial_II.cinema.model.ScreenRoom;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -28,7 +29,7 @@ public class ScreenRoomView extends VBox {
     btnSelect.setOnAction(e -> {
       ScreenRoom select = rooms.getSelectionModel().getSelectedItem();
       if(select != null) {
-        // stage.setScene(new Scene(new SeatView()));
+        stage.setScene(new Scene(new SeatView(stage, cinema, customer, select)));
         message.setText("Room selected");
       }
       else {
@@ -38,6 +39,4 @@ public class ScreenRoomView extends VBox {
 
     getChildren().addAll(title, rooms, btnSelect);
   }
-
-
 }

@@ -46,7 +46,9 @@ public class Cinema implements Serializable {
    * @param room the ScreenRoom object to add
    */
   public void addRoom(ScreenRoom room) {
-    rooms.add(room);
+    if(!rooms.contains(room)) {
+      rooms.add(room);
+    }
   }
 
   /**
@@ -54,11 +56,15 @@ public class Cinema implements Serializable {
    * @param ticket the Ticket object to add
    */
   public void addTicket(Ticket ticket) {
-    tickets.add(ticket);
+    if(!tickets.contains(ticket)) {
+      tickets.add(ticket);
+    }
   }
 
   public void addCustomer(Customer customer) {
-    customers.add(customer);
+    if(!customers.contains(customer)) {
+      customers.add(customer);
+    }
   }
 
   /**
@@ -66,13 +72,19 @@ public class Cinema implements Serializable {
    * @param email the email of the customer to search for
    * @return the Ticket object associated with the customer, or null if not found
    */
-  public Customer findCustomer(String email) {
+  public Customer findCustomerByEmail(String email) {
     Customer customer = null;
     for (Customer c : customers) {
       if(c.getEmail().equals(email)) {
         customer = c;
+        break;
       }
     }
     return customer;
+  }
+
+  @Override
+  public String toString() {
+    return "Cinema [rooms: " + rooms.toString() + "\ntickets: " + tickets.toString() + "]";
   }
 }

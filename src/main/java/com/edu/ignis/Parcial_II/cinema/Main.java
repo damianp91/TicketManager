@@ -1,30 +1,41 @@
 package com.edu.ignis.Parcial_II.cinema;
 
-import com.edu.ignis.Parcial_II.cinema.model.Customer;
+
+import com.edu.ignis.Parcial_II.cinema.model.Cinema;
 import com.edu.ignis.Parcial_II.cinema.model.ScreenRoom;
+import com.edu.ignis.Parcial_II.cinema.persistence.DataPersistense;
+import com.edu.ignis.Parcial_II.cinema.view.LoginView;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-  // Customer c1 = new Customer("d", "d@g", "1234");
-  // Customer c2 = new Customer("d", "d@g", "1254");
-
-  ScreenRoom room = new ScreenRoom(1, "Matrix", 4, 5);
+  private Cinema cinema;
 
   public static void main(String[] args) {
     launch(args);
   }
 
   @Override
-  public void start(Stage stage) {
-    // Label label = new Label("¡Hello world from JavaFX! ");
-    Label label = new Label(room.showRoom());
-    Scene scene = new Scene(label, 400, 200);
-    stage.setScene(scene);
-    stage.setTitle("JavaFX Project:Parcial_II");
-    stage.show();
+  public void start(Stage primaryStage) throws Exception {
+
+    try {
+      cinema = DataPersistense.load();
+    } catch (Exception e) {
+      cinema = new Cinema();
+    }
+
+    if(cinema.getRooms().isEmpty()) {
+      cinema.addRoom(new ScreenRoom(1, "Matix", 4, 5));
+      cinema.addRoom(new ScreenRoom(2, "StarWars", 4, 5));
+    }
+
+    LoginView login = new LoginView(primaryStage, cinema);
+    Scene scene = new Scene(login, 400, 400);
+    primaryStage.setTitle("Cine App");
+    primaryStage.setScene(scene);
+    primaryStage.setOnCloseRequest(e -> DataPersistense.save(cinema));
+    primaryStage.show();
   }
 }

@@ -49,9 +49,9 @@ public class Ticket implements Serializable {
    */
   @Override
   public String toString() {
-    return "Ticket [customer: " + customer.getName() + ", room: " + room.getMovie() +
-      ", Movie: " + room.getMovie()  + ", seat: " + seat.getNumber() +
-      ", file: " + seat.getLine() + "]"
+    return "Ticket [customer: " + customer.getName().toUpperCase() + ", room: " +
+      room.getNumber() + ", Movie: " + room.getMovie().toUpperCase()  + ", seat: " +
+      seat.getNumber() + ", file: " + seat.getLine() + "]"
     ;
   }
 }

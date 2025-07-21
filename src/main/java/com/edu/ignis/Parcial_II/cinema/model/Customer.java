@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Customer implements Serializable {
   private String name;
   private String email;
-  private String passsword;
+  private String password;
 
   /** 
    * Constructs a new Customer object with the specified name, email, and password.
@@ -14,10 +14,10 @@ public class Customer implements Serializable {
    * @param email the email of the customer
    * @param passsword the password of the customer
    */
-  public Customer(String name, String email, String passsword) {
+  public Customer(String name, String email, String password) {
     this.name = name;
     this.email = email;
-    this.passsword = passsword;
+    this.password = password;
   } 
 
   /**
@@ -41,7 +41,7 @@ public class Customer implements Serializable {
    * @return the password of the customer
    */
   private String getPass() {
-    return passsword;
+    return password;
   }
 
   public boolean passwordOk(String pass) {

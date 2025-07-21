@@ -8,21 +8,25 @@ import java.io.Serializable;
 public class ScreenRoom implements Serializable {
   private int number;
   private String movie;
-  private int file;
-  private int seat;
   private Seat[][] seats;
 
   /**
    * Constructs a screen room with the specified number, movie, rows, and seats.
    * @param number the screen room number
    * @param movie the movie being shown
-   * @param file the number of rows in the screen room
-   * @param seat the number of seats per row
+   * @param row the number of rows in the screen room
+   * @param seatPerRow the number of seats per row
    */
-  public ScreenRoom(int number, String movie, int file, int seat) {
+  public ScreenRoom(int number, String movie, int row, int seatPerRow) {
     this.number = number;
     this.movie = movie;
-    this.seats = new Seat[file][seat];
+    this.seats = new Seat[row][seatPerRow];
+
+    for(int i = 0; i < row; i ++) {
+      for(int j = 0; j < seatPerRow; j ++) {
+        this.seats[i][j] = new Seat(j + 1, i + 1);
+      }
+    }
   }
 
   /**
@@ -45,15 +49,23 @@ public class ScreenRoom implements Serializable {
    * Retrieves a specific seat in the screen room.
    * @return the seat object
    */
-  public Seat getSeat() {
-    return seats[file][seat];
+  public Seat[][] getSeats() {
+    return seats;
   }
 
-  public void setSeat(Seat seat, int file, int number) {
-    if (file >= 0 && file < seats.length && 
-        number >= 0 && number < seats[file].length) {
-      seats[file][number] = seat;
+  private boolean isPlaceCorrect(int row, int col) {
+    return row >= 0 && row < seats.length &&
+            col >= 0 && col < seats[row].length;
+  }
+
+  public void occupySeat(int row, int col) {
+    if (isPlaceCorrect(row, col)) {
+      seats[row][col].setOccupied(true);
     }
+  }
+
+  public boolean isSeatOccupied(int row, int col) {
+    return isPlaceCorrect(row, col) && seats[row][col].isOccupied();
   }
 
   /**
@@ -67,8 +79,8 @@ public class ScreenRoom implements Serializable {
 
     for (int i = 0; i < seats.length; i++) {
       sb.append("\t\tfile ").append(i + 1).append(": ");
-      for (int j = 0; j < seats[0].length; j++) {
-        sb.append(seats[i][j] != null ? "[X]" : "[ ]");
+      for (int j = 0; j < seats[i].length; j++) {
+        sb.append(seats[i][j].isOccupied() ? "[X]" : "[ ]");
       }
       sb.append("\n");
     }
@@ -77,5 +89,10 @@ public class ScreenRoom implements Serializable {
     sb.append("\t\tScreen");
 
     return sb.toString();
+  }
+
+  @Override
+  public String toString() {
+    return "ScreenRoom [Sala: " + number + ", movie: " + movie + "]";
   }
 }

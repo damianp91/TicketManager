@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Seat implements Serializable {
   private int number;
-  private String line;
+  private int line;
   private boolean occupied;
 
   /**
@@ -13,10 +13,10 @@ public class Seat implements Serializable {
    * @param line the line where the seat is located
    * @param occupied the occupation status of the seat
    */
-  public Seat(int number, String line, boolean occupied) {
+  public Seat(int number, int line) {
     this.number = number;
     this.line = line;
-    this.occupied = occupied;
+    this.occupied = false;
   }
 
   /**
@@ -31,7 +31,7 @@ public class Seat implements Serializable {
    * Retrieves the line where the seat is located.
    * @return the line of the seat
    */
-  public String getLine() {
+  public int getLine() {
     return line;
   }
 
@@ -41,22 +41,6 @@ public class Seat implements Serializable {
    */
   public boolean isOccupied() {
     return occupied;
-  }
-
-  /**
-   * Sets the seat number.
-   * @param number the new seat number
-   */
-  public void setNumber(int number) {
-    this.number = number;
-  }
-
-  /**
-   * Sets the line for the seat.
-   * @param line the new line for the seat
-   */
-  public void setLine(String line) {
-    this.line = line;
   }
 
   /**
@@ -74,7 +58,7 @@ public class Seat implements Serializable {
   @Override
   public String toString() {
     return "Seat [number: " + number + ", line: " + line + ", occupied: " +
-      (occupied ? "avalible" : "not avalible") + "]"
+      (occupied ? "Occupied" : "available") + "]"
     ;
   }
 }
