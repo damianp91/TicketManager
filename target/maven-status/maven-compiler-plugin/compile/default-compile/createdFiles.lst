@@ -1,7 +1,9 @@
 com/edu/ignis/Parcial_II/cinema/controller/ExceptionsControllers/ErrorLoginException.class
 com/edu/ignis/Parcial_II/cinema/view/MenuView.class
 com/edu/ignis/Parcial_II/cinema/controller/ExceptionsControllers/ExistCustomerException.class
+com/edu/ignis/Parcial_II/cinema/view/SeatsAvailableView.class
 com/edu/ignis/Parcial_II/cinema/model/Cinema.class
+com/edu/ignis/Parcial_II/cinema/view/PurchasedTicketsView.class
 com/edu/ignis/Parcial_II/cinema/view/LoginView.class
 com/edu/ignis/Parcial_II/cinema/view/SeatView.class
 com/edu/ignis/Parcial_II/cinema/view/ConfirmationView.class

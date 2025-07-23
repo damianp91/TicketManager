@@ -27,8 +27,9 @@ public class Main extends Application {
     }
 
     if(cinema.getRooms().isEmpty()) {
-      cinema.addRoom(new ScreenRoom(1, "Matix", 4, 5));
-      cinema.addRoom(new ScreenRoom(2, "StarWars", 4, 5));
+      cinema.addRoom(new ScreenRoom(1, "Matix", 4, 6));
+      cinema.addRoom(new ScreenRoom(2, "StarWars", 4, 6));
+      cinema.addRoom(new ScreenRoom(3, "Interstellar", 4, 6));
     }
 
     LoginView login = new LoginView(primaryStage, cinema);

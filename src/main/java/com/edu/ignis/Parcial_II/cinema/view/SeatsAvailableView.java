@@ -11,32 +11,42 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ScreenRoomView extends VBox {
+public class SeatsAvailableView extends VBox {
 
-  public ScreenRoomView(Stage stage, Cinema cinema, Customer customer) {
+  public SeatsAvailableView(Stage stage, Cinema cinema, Customer customer) {
     setSpacing(10);
     setPadding(new javafx.geometry.Insets(20));
 
-    Label title = new Label("Avalible rooms");
+    Label title = new Label("Seats rooms");
     ListView<ScreenRoom> rooms = new ListView<>();
     Label message = new Label();
+
+    Label roomDetails = new Label();
+    roomDetails.setStyle("-fx-font-family: monospace;");
+
     for (ScreenRoom s : cinema.getRooms()) {
       rooms.getItems().add(s);
     }
 
     Button btnSelect = new Button("Select room");
+    Button btnBack = new Button("Back");
 
     btnSelect.setOnAction(e -> {
-      ScreenRoom select = rooms.getSelectionModel().getSelectedItem();
-      if(select != null) {
-        stage.setScene(new Scene(new SeatView(stage, cinema, customer, select), 800, 600));
+      ScreenRoom selected = rooms.getSelectionModel().getSelectedItem();
+      if(selected != null) {
+        roomDetails.setText(selected.showRoom());
         message.setText("Room selected");
       }
       else {
-        message.setText("Error: you don't selected sala");
+        message.setText("Error: you didn't select room");
+        roomDetails.setText("");
       }
     });
 
-    getChildren().addAll(title, rooms, btnSelect);
+    btnBack.setOnAction(e -> {
+      stage.setScene(new Scene(new MenuView(stage, cinema, customer)));
+    });
+
+    getChildren().addAll(title, rooms, btnSelect, roomDetails, message, btnBack);
   }
 }

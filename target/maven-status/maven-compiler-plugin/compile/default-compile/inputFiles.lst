@@ -4,7 +4,9 @@
 /home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/Main.java
 /home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/controller/LoginController.java
 /home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/model/Seat.java
+/home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/view/PurchasedTicketsView.java
 /home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/persistence/DataPersistense.java
+/home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/view/SeatsAvailableView.java
 /home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/controller/ExceptionsControllers/ErrorLoginException.java
 /home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/view/LoginView.java
 /home/damianp/Facultad/Progra_II/f_PrograTwoJava/Examples/Parcial_II/src/main/java/com/edu/ignis/Parcial_II/cinema/controller/ExceptionsControllers/ExistCustomerException.java

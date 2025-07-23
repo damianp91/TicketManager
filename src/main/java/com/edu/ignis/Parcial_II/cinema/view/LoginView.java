@@ -42,8 +42,7 @@ public class LoginView extends VBox {
           return;
         }
         Customer customer = LoginController.login(email, pass, cinema);
-        message.setText("Welcome " + customer.getName());
-        stage.setScene(new Scene(new MenuView(stage, cinema, customer)));
+        stage.setScene(new Scene(new MenuView(stage, cinema, customer), 400, 400));
       } catch (ErrorLoginException elx) {
         message.setText(elx.getMessage());
       }

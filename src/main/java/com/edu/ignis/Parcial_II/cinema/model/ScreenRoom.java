@@ -24,7 +24,7 @@ public class ScreenRoom implements Serializable {
 
     for(int i = 0; i < row; i ++) {
       for(int j = 0; j < seatPerRow; j ++) {
-        this.seats[i][j] = new Seat(j + 1, i + 1);
+        this.seats[i][j] = new Seat(i + 1, j + 1);
       }
     }
   }

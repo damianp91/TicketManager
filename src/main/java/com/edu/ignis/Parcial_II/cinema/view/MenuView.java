@@ -14,21 +14,29 @@ public class MenuView extends VBox {
   public MenuView(Stage stage, Cinema cinema, Customer customer) {
     setSpacing(10);
     setPadding(new javafx.geometry.Insets(20));
-    // Customer customer = LoginController.login(email, pass, cinema);
-    // message.setText("Welcome " + customer.getName());
-    // stage.setScene(new Scene(new ScreenRoomView(stage, cinema, customer)));
+
     // Menu
+    Label message = new Label();
+    message.setText("Welcome " + customer.getName());
     Label title = new Label("OPTIONS");
     Button btnBuy = new Button("Buy");
+    Button btnSeatsAvailable = new Button("Seats Available");
     Button btnTickets = new Button("Tickets");
     Button btnExit = new Button("Exit");
 
     btnBuy.setOnAction(e -> {
-      // aca va logica de compra boleto
+      ScreenRoomView buy = new ScreenRoomView(stage, cinema, customer);
+      stage.setScene(new Scene(buy));
     });
 
+    btnSeatsAvailable.setOnAction(e -> {
+      SeatsAvailableView available = new SeatsAvailableView(stage, cinema, customer);
+      stage.setScene(new Scene(available));
+    });  
+
     btnTickets.setOnAction(e -> {
-      // aca va logica de tickets comprados
+      PurchasedTicketsView tickets = new PurchasedTicketsView(stage, cinema, customer);
+      stage.setScene(new Scene(tickets));
     });
 
     // Exit
@@ -36,6 +44,6 @@ public class MenuView extends VBox {
       LoginView back = new LoginView(stage, cinema);
       stage.setScene(new Scene(back));
     });
-    getChildren().addAll(title, btnBuy, btnTickets, btnExit);
+    getChildren().addAll(title, btnBuy, btnSeatsAvailable, btnTickets, btnExit);
   }
 }

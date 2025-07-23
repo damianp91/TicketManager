@@ -8,6 +8,7 @@ import com.edu.ignis.Parcial_II.cinema.model.Seat;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,7 +19,7 @@ public class SeatView extends VBox {
     setSpacing(10);
     setPadding(new javafx.geometry.Insets(20));
 
-    Label title = new Label("Seats - Sala" + room.getNumber() + " - " + room.getMovie());
+    Label title = new Label(room.toString());
     GridPane g = new GridPane();
     g.setHgap(5);
     g.setVgap(5);
@@ -30,6 +31,8 @@ public class SeatView extends VBox {
         Button btnSeat = new Button(seat.getNumber() + "");
         btnSeat.setDisable(seat.isOccupied());
         btnSeat.setStyle(seat.isOccupied() ? "-fx-background-color: red;" : "-fx-background-color: green;");
+        btnSeat.setPrefWidth(20);
+        btnSeat.setPrefHeight(20);
 
         btnSeat.setOnAction(e -> {
           stage.setScene(new Scene(new ConfirmationView(stage, customer, room, seat, cinema)));
@@ -37,13 +40,16 @@ public class SeatView extends VBox {
         g.add(btnSeat, j, i);
       }
     }
-    
+
+    ScrollPane scrollPane = new ScrollPane(g);
+    scrollPane.setFitToWidth(true);
+
     Button btnback = new Button("Back");
 
     btnback.setOnAction(e -> {
-      LoginView back = new LoginView(stage, cinema);
+      MenuView back = new MenuView(stage, cinema, customer);
       stage.setScene(new Scene(back));
     });
-    getChildren().addAll(title, g);
+    getChildren().addAll(title, scrollPane, btnback);
   }
 }

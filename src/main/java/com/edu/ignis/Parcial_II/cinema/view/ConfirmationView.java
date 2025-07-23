@@ -19,7 +19,8 @@ import javafx.stage.Stage;
 
 public class ConfirmationView extends VBox {
   
-  public ConfirmationView(Stage stage, Customer customer, ScreenRoom room, Seat seat, Cinema cinema) {
+  public ConfirmationView(Stage stage, Customer customer, ScreenRoom room,
+      Seat seat, Cinema cinema) {
     setSpacing(10);
     setPadding(new javafx.geometry.Insets(20));
 
