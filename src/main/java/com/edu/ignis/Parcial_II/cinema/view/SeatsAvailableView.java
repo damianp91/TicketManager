@@ -23,6 +23,8 @@ public class SeatsAvailableView extends VBox {
 
     Label roomDetails = new Label();
     roomDetails.setStyle("-fx-font-family: monospace;");
+    roomDetails.setMaxWidth(Double.MAX_VALUE);
+    roomDetails.setWrapText(true);
 
     for (ScreenRoom s : cinema.getRooms()) {
       rooms.getItems().add(s);

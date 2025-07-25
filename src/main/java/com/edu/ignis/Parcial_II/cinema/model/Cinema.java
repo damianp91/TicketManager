@@ -37,6 +37,10 @@ public class Cinema implements Serializable {
     return tickets;
   }
 
+  /**
+     * Retrieves the list of customers registered in the cinema.
+     * @return a List of Customer objects
+     */
   public List<Customer> getCustomers() {
     return customers;
   }
@@ -85,6 +89,6 @@ public class Cinema implements Serializable {
 
   @Override
   public String toString() {
-    return "Cinema [rooms: " + rooms.toString() + "\ntickets: " + tickets.toString() + "]";
+    return "Cinema\nRooms: " + rooms.toString() + "\nTickets: " + tickets.toString();
   }
 }

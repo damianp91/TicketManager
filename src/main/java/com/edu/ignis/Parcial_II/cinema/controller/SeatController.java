@@ -1,10 +1,18 @@
 package com.edu.ignis.Parcial_II.cinema.controller;
 
 import com.edu.ignis.Parcial_II.cinema.model.ScreenRoom;
-import com.edu.ignis.Parcial_II.cinema.model.Seat;
 
 public class SeatController {
-  
+
+  /**
+     * Attempts to take a seat in the specified screen room at the given row and column.
+     *
+     * @param room the screen room where the seat is located
+     * @param row the row of the seat to be occupied
+     * @param col the column of the seat to be occupied
+     * @return {@code true} if the seat was successfully taken, {@code false}
+     * if the seat is already occupied
+     */
   public static boolean takeSeat(ScreenRoom room, int row, int col) {
     boolean take = false;
     if(!room.isSeatOccupied(row, col)) {
@@ -12,9 +20,5 @@ public class SeatController {
       take = true;
     }
     return take;
-  }
-  
-  public static String getStatusSeat(Seat seat) {
-    return seat.toString();
   }
 }

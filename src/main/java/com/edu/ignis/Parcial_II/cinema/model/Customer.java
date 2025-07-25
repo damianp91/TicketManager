@@ -25,7 +25,7 @@ public class Customer implements Serializable {
    * @return the name of the customer
    */
   public String getName() {
-    return name;
+    return name.toUpperCase();
   }
 
   /**
@@ -33,7 +33,7 @@ public class Customer implements Serializable {
    * @return the email of the customer
    */
   public String getEmail() {
-    return email;
+    return email.toLowerCase();
   }
 
   /**
@@ -44,6 +44,12 @@ public class Customer implements Serializable {
     return password;
   }
 
+  /**
+     * Checks if the provided password matches the customer's password.
+     * @param pass the password to verify
+     * @return true if the provided password matches the customer's password,
+     * false otherwise
+     */
   public boolean passwordOk(String pass) {
     return getPass().equals(pass);
   }
@@ -79,6 +85,6 @@ public class Customer implements Serializable {
    */
   @Override
   public String toString() {
-    return "Customer [name: " + name + ", email: " + email + "]";
+    return "Customer: " + getName() + ", Email: " + getEmail();
   }
 }

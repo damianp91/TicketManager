@@ -44,6 +44,6 @@ public class MenuView extends VBox {
       LoginView back = new LoginView(stage, cinema);
       stage.setScene(new Scene(back));
     });
-    getChildren().addAll(title, btnBuy, btnSeatsAvailable, btnTickets, btnExit);
+    getChildren().addAll(message, title, btnBuy, btnSeatsAvailable, btnTickets, btnExit);
   }
 }

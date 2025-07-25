@@ -42,7 +42,7 @@ public class ScreenRoom implements Serializable {
    * @return the movie title
    */
   public String getMovie() {
-    return movie;
+    return movie.toUpperCase();
   }
 
   /**
@@ -53,17 +53,35 @@ public class ScreenRoom implements Serializable {
     return seats;
   }
 
+  /**
+     * Checks if the given row and column indices are within the valid range of
+     * the screen room layout.
+     * @param row the row index to check
+     * @param col the column index to check
+     * @return true if the indices are valid, false otherwise
+     */
   private boolean isPlaceCorrect(int row, int col) {
     return row >= 0 && row < seats.length &&
-            col >= 0 && col < seats[row].length;
+    col >= 0 && col < seats[row].length;
   }
 
+  /**
+     * Marks a specific seat as occupied in the screen room.
+     * @param row the row index of the seat
+     * @param col the column index of the seat
+     */
   public void occupySeat(int row, int col) {
     if (isPlaceCorrect(row, col)) {
       seats[row][col].setOccupied(true);
     }
   }
 
+  /**
+     * Checks if a specific seat in the screen room is occupied.
+     * @param row the row index of the seat
+     * @param col the column index of the seat
+     * @return true if the seat is occupied, false otherwise
+     */
   public boolean isSeatOccupied(int row, int col) {
     return isPlaceCorrect(row, col) && seats[row][col].isOccupied();
   }
@@ -76,15 +94,13 @@ public class ScreenRoom implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("Room: ").append(getNumber()).append("\n");
     sb.append("Movie: ").append(getMovie()).append("\n");
-
     for (int i = 0; i < seats.length; i++) {
-      sb.append("\t\tfile ").append(i + 1).append(": ");
+      sb.append("f ").append(i + 1).append(": ");
       for (int j = 0; j < seats[i].length; j++) {
         sb.append(seats[i][j].isOccupied() ? "[X]" : "[ ]");
       }
       sb.append("\n");
     }
-
     sb.append("\t====================\n");
     sb.append("\t\tScreen");
 
@@ -93,6 +109,6 @@ public class ScreenRoom implements Serializable {
 
   @Override
   public String toString() {
-    return "ScreenRoom [Sala: " + number + ", movie: " + movie + "]";
+    return "Screening Room: " + getNumber() + ", movie: " + getMovie();
   }
 }

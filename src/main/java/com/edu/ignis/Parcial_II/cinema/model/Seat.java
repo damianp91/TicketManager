@@ -57,8 +57,8 @@ public class Seat implements Serializable {
    */
   @Override
   public String toString() {
-    return "Seat [number: " + number + ", line: " + line + ", occupied: " +
-      (occupied ? "Occupied" : "available") + "]"
+    return "Seat: " + number + ", line: " + line + ", status: " +
+      (occupied ? "Occupied" : "Available")
     ;
   }
 }
