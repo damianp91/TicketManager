@@ -31,19 +31,19 @@ public class MenuView extends VBox {
 
     btnSeatsAvailable.setOnAction(e -> {
       SeatsAvailableView available = new SeatsAvailableView(stage, cinema, customer);
-      stage.setScene(new Scene(available));
-    });  
+      stage.setScene(new Scene(available, 400, 400));
+    });
 
     btnTickets.setOnAction(e -> {
       PurchasedTicketsView tickets = new PurchasedTicketsView(stage, cinema, customer);
-      stage.setScene(new Scene(tickets));
+      stage.setScene(new Scene(tickets, 400, 400));
     });
 
     // Exit
     btnExit.setOnAction(e -> {
       LoginView back = new LoginView(stage, cinema);
-      stage.setScene(new Scene(back));
+      stage.setScene(new Scene(back, 400, 400));
     });
-    getChildren().addAll(message, title, btnBuy, btnSeatsAvailable, btnTickets, btnExit);
+    getChildren().addAll(title, btnBuy, btnSeatsAvailable, btnTickets, btnExit);
   }
 }

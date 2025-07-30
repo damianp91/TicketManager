@@ -48,7 +48,7 @@ public class PurchasedTicketsView extends VBox {
 
     btnBack.setOnAction(e -> {
       MenuView back = new MenuView(stage, cinema, customer);
-      stage.setScene(new Scene(back));
+      stage.setScene(new Scene(back, 400, 400));
     });
     getChildren().addAll(title, name, ticketsList, btnBack);
   }

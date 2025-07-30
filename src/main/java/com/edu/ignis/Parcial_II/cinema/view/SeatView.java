@@ -27,16 +27,22 @@ public class SeatView extends VBox {
     for(int i = 0; i < seats.length; i ++) {
       for(int j = 0; j < seats[i].length; j++) {
         Seat seat = seats[i][j];
-        Button btnSeat = new Button(seat.getNumber() + "." + seat.getLine());
-        btnSeat.setDisable(seat.isOccupied());
-        btnSeat.setStyle(seat.isOccupied() ? "-fx-background-color: red;" : "-fx-background-color: green;");
+        Button btnSeat = new Button((seat.getRow() + 1) + "." + (seat.getCol() + 1));
+        btnSeat.setStyle(seat.isOccupied() ? "-fx-background-color: red;" :
+          "-fx-background-color: green;")
+        ;
         btnSeat.setPrefWidth(40);
         btnSeat.setPrefHeight(40);
 
         btnSeat.setOnAction(e -> {
-          stage.setScene(new Scene(new ConfirmationView(stage, customer, room, seat, cinema)));
+          System.out.println("fila: " + (seat.getRow() + 1) + "columna: " +
+            (seat.getCol() + 1))
+          ;
+          stage.setScene(new Scene(new ConfirmationView(stage, customer, room,
+            seat, cinema))
+          );
         });
-        g.add(btnSeat, j, i);
+        g.add(btnSeat, j, seats.length - 1 - i);
       }
     }
 
@@ -44,7 +50,7 @@ public class SeatView extends VBox {
 
     btnback.setOnAction(e -> {
       MenuView back = new MenuView(stage, cinema, customer);
-      stage.setScene(new Scene(back));
+      stage.setScene(new Scene(back, 400, 400));
     });
     getChildren().addAll(title, g, btnback);
   }

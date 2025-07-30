@@ -7,7 +7,7 @@ public class PurchaseController {
 
   /**
      * Handles the purchase process for a cinema ticket.
-     * 
+     *
      * @param cinema   The cinema where the purchase is being made.
      * @param customer The customer making the purchase.
      * @param room     The screen room where the seat is located.
@@ -16,11 +16,10 @@ public class PurchaseController {
      */
   public static void makePurchase(Cinema cinema, Customer customer, ScreenRoom room,
       Seat seat) throws AvalibleSeatException {
-    if(!SeatController.takeSeat(room, seat.getLine(), seat.getNumber())) {
+    if(!SeatController.takeSeat(room, seat.getRow(), seat.getCol())) {
       throw new AvalibleSeatException("Seat isn't available.");
     }
     else {
-      seat.setOccupied(true);
       Ticket ticket = new Ticket(customer, room, seat);
       cinema.addTicket(ticket);
       cinema.addCustomer(customer);

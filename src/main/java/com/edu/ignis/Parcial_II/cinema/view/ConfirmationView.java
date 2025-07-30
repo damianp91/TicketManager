@@ -48,7 +48,7 @@ public class ConfirmationView extends VBox {
     btnCancel.setOnAction(e -> {
       message.setText("Your purchase was canceled!");
       MenuView back = new MenuView(stage, cinema, customer);
-      stage.setScene(new Scene(back));
+      stage.setScene(new Scene(back, 400, 400));
     });
     getChildren().addAll(title, data, btnConfirm, btnCancel);
   }

@@ -2,7 +2,9 @@ package com.edu.ignis.Parcial_II.cinema.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a Cinema with screen rooms and tickets.
@@ -11,6 +13,8 @@ public class Cinema implements Serializable {
   private List<ScreenRoom> rooms;
   private List<Ticket> tickets;
   private List<Customer> customers;
+
+  private transient Map<String, Customer> customerMap = new HashMap<>();
 
   /**
    * Constructs a Cinema object with empty lists for screen rooms and tickets.
@@ -68,23 +72,28 @@ public class Cinema implements Serializable {
   public void addCustomer(Customer customer) {
     if(!customers.contains(customer)) {
       customers.add(customer);
+      customerMap.put(customer.getEmail(), customer);
     }
   }
 
   /**
-   * Finds a customer's ticket in the cinema by their email.
-   * @param email the email of the customer to search for
-   * @return the Ticket object associated with the customer, or null if not found
-   */
+     * Finds a customer in the cinema by their email.
+     * @param email the email of the customer to search for
+     * @return the Customer object associated with the email, or null if not found
+     */
   public Customer findCustomerByEmail(String email) {
-    Customer customer = null;
-    for (Customer c : customers) {
-      if(c.getEmail().equals(email)) {
-        customer = c;
-        break;
-      }
+    return customerMap.get(email);
+  }
+
+  /**
+     * Rebuilds the customer map by populating it with entries from the customers list.
+     * This ensures the map is synchronized with the current list of customers.
+     */
+  public void rebuildCustomerMap() {
+    customerMap = new HashMap<>();
+    for (Customer c: customers) {
+      customerMap.put(c.getEmail(), c);
     }
-    return customer;
   }
 
   @Override

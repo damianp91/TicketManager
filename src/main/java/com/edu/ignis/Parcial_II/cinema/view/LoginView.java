@@ -61,6 +61,8 @@ public class LoginView extends VBox {
         message.setText("Succesful register.");
       } catch (ExistCustomerException ece) {
         message.setText(ece.getMessage());
+      } catch (ErrorLoginException ele) {
+        message.setText(ele.getMessage());
       }
     });
     

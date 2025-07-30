@@ -46,9 +46,8 @@ public class Customer implements Serializable {
 
   /**
      * Checks if the provided password matches the customer's password.
-     * @param pass the password to verify
-     * @return true if the provided password matches the customer's password,
-     * false otherwise
+     * @param pass the password to check
+     * @return true if the password matches, false otherwise
      */
   public boolean passwordOk(String pass) {
     return getPass().equals(pass);

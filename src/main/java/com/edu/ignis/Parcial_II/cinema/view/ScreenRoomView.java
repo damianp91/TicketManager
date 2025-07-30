@@ -30,7 +30,9 @@ public class ScreenRoomView extends VBox {
       ScreenRoom select = rooms.getSelectionModel().getSelectedItem();
       if(select != null) {
         message.setText("Select a place.");
-        stage.setScene(new Scene(new SeatView(stage, cinema, customer, select), 800, 600));
+        stage.setScene(new Scene(new SeatView(stage, cinema, customer, select),
+          800, 600)
+        );
       }
       else {
         message.setText("Error: you don't selected sala");

@@ -3,8 +3,8 @@ package com.edu.ignis.Parcial_II.cinema.model;
 import java.io.Serializable;
 
 public class Seat implements Serializable {
-  private int number;
-  private int line;
+  private int row;
+  private int col;
   private boolean occupied;
 
   /**
@@ -13,9 +13,9 @@ public class Seat implements Serializable {
    * @param line the line where the seat is located
    * @param occupied the occupation status of the seat
    */
-  public Seat(int number, int line) {
-    this.number = number;
-    this.line = line;
+  public Seat(int row, int col) {
+    this.row = row;
+    this.col = col;
     this.occupied = false;
   }
 
@@ -23,16 +23,16 @@ public class Seat implements Serializable {
    * Retrieves the seat number.
    * @return the number of the seat
    */
-  public int getNumber() {
-    return number;
+  public int getRow() {
+    return row;
   }
 
   /**
    * Retrieves the line where the seat is located.
    * @return the line of the seat
    */
-  public int getLine() {
-    return line;
+  public int getCol() {
+    return col;
   }
 
   /**
@@ -57,7 +57,7 @@ public class Seat implements Serializable {
    */
   @Override
   public String toString() {
-    return "Seat: " + number + ", line: " + line + ", status: " +
+    return "Row: " + (row + 1) + ", Number: " + (col + 1) + ", status: " +
       (occupied ? "Occupied" : "Available")
     ;
   }

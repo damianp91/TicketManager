@@ -46,7 +46,8 @@ public class SeatsAvailableView extends VBox {
     });
 
     btnBack.setOnAction(e -> {
-      stage.setScene(new Scene(new MenuView(stage, cinema, customer)));
+      MenuView back = new MenuView(stage, cinema, customer);
+      stage.setScene(new Scene(back, 400, 400));
     });
 
     getChildren().addAll(title, rooms, btnSelect, roomDetails, message, btnBack);

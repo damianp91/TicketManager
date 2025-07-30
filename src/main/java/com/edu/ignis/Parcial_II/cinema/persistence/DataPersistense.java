@@ -20,7 +20,7 @@ public class DataPersistense {
     try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE))) {
       oos.writeObject(cinema);
     } catch (IOException e) {
-      System.out.println("Error guardando estado: " + e.getMessage());
+      System.out.println("Failed to save state: " + e.getMessage());
     }
   }
 
@@ -35,9 +35,13 @@ public class DataPersistense {
     }
 
     try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE))) {
-      return (Cinema) ois.readObject();
+      Cinema cinema = (Cinema) ois.readObject();
+      cinema.rebuildCustomerMap();
+      return cinema;
     } catch (IOException | ClassNotFoundException e) {
-      System.out.println("Error: file don't load: " + e.getMessage());
+      System.out.println("Error: Failed to load the file. Make sure 'cine.ser'" +
+        "exists and is valid: " + e.getMessage()
+      );
       return new Cinema();
     }
   }

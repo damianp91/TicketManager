@@ -51,7 +51,7 @@ public class Ticket implements Serializable {
   public String toString() {
     return "Ticket: " + customer.getName() + ", room: " +
       room.getNumber() + ", Movie: " + room.getMovie()  + ", seat: " +
-      seat.getNumber() + ", file: " + seat.getLine()
+      (seat.getRow() + 1) + ", file: " + (seat.getCol() + 1)
     ;
   }
 }
