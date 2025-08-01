@@ -86,27 +86,6 @@ public class ScreenRoom implements Serializable {
     return isPlaceCorrect(row, col) && seats[row][col].isOccupied();
   }
 
-  /**
-   * Displays the layout of the screen room, including rows and seats.
-   * @return a string representation of the screen room layout
-   */
-  public String showRoom() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Room: ").append(getNumber()).append("\n");
-    sb.append("Movie: ").append(getMovie()).append("\n");
-    for (int i = 0; i < seats.length; i++) {
-      sb.append("f ").append(i + 1).append(": ");
-      for (int j = 0; j < seats[i].length; j++) {
-        sb.append(seats[i][j].isOccupied() ? "[X]" : "[ ]");
-      }
-      sb.append("\n");
-    }
-    sb.append("====================\n");
-    sb.append("\tScreen");
-
-    return sb.toString();
-  }
-
   @Override
   public String toString() {
     return "Screening Room: " + getNumber() + ", movie: " + getMovie();

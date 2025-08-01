@@ -5,10 +5,13 @@ import com.edu.ignis.Parcial_II.cinema.model.Customer;
 import com.edu.ignis.Parcial_II.cinema.model.ScreenRoom;
 import com.edu.ignis.Parcial_II.cinema.model.Seat;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -19,9 +22,20 @@ public class SeatView extends VBox {
     setPadding(new javafx.geometry.Insets(20));
 
     Label title = new Label(room.toString());
+    title.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+
     GridPane g = new GridPane();
     g.setHgap(5);
     g.setVgap(5);
+
+    Label screenText = new Label("SCREEN");
+    screenText.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+    
+    // Setting image of screen
+    HBox screenBox = new HBox(screenText);
+    screenBox.setAlignment(Pos.CENTER);
+    screenBox.setPadding(new Insets(5));
+    screenBox.setStyle("-fx-background-color: lightblue; -fx-border-color: gray;");
 
     Seat[][] seats = room.getSeats();
     for(int i = 0; i < seats.length; i ++) {
@@ -35,9 +49,6 @@ public class SeatView extends VBox {
         btnSeat.setPrefHeight(40);
 
         btnSeat.setOnAction(e -> {
-          System.out.println("fila: " + (seat.getRow() + 1) + "columna: " +
-            (seat.getCol() + 1))
-          ;
           stage.setScene(new Scene(new ConfirmationView(stage, customer, room,
             seat, cinema))
           );
@@ -52,6 +63,6 @@ public class SeatView extends VBox {
       MenuView back = new MenuView(stage, cinema, customer);
       stage.setScene(new Scene(back, 400, 400));
     });
-    getChildren().addAll(title, g, btnback);
+    getChildren().addAll(title, g, screenBox, btnback);
   }
 }

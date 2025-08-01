@@ -20,19 +20,19 @@ public class PurchasedTicketsView extends VBox {
   public PurchasedTicketsView(Stage stage, Cinema cinema, Customer customer) {
     setSpacing(10);
     setPadding(new javafx.geometry.Insets(20));
-    
+
     Label title = new Label("Your tickets:");
     title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
-    
+
     Label name = new Label(customer.toString());
     List<Ticket> tickets = new ArrayList<>();
     for (Ticket t : cinema.getTickets() ) {
-      String email = t.getCustomer().getEmail(); 
+      String email = t.getCustomer().getEmail();
       if(email.equals(customer.getEmail())) {
         tickets.add(t);
-      } 
+      }
     }
-    
+
     Node ticketsList;
 
     if (tickets.isEmpty()) {

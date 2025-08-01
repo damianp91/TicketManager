@@ -31,10 +31,11 @@ public class ScreenRoomView extends VBox {
       if(select != null) {
         message.setText("Select a place.");
         stage.setScene(new Scene(new SeatView(stage, cinema, customer, select),
-          800, 600)
+          400, 400)
         );
       }
       else {
+        message.setStyle("-fx-text-fill: red;");
         message.setText("Error: you don't selected sala");
       }
     });
