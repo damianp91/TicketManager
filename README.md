@@ -5,7 +5,7 @@
 ---
 
 
-Cinema Ticket Sales System
+ 🎬 Cinema Ticket Sales System
 ======
 ## Develop a cinema ticket sales system that allows users to:
 - Register or log in as a customer.
@@ -24,7 +24,7 @@ Cinema Ticket Sales System
 # Persistence:
 * DataPersistence: methods to save and load objects using serialization.
 * JavaFX Interface
-*Login/Registration screen.
+* Login/Registration screen.
 * Screening room and movie selection screen.
 * Seat visualization (free/occupied).
 * Purchase confirmation.
@@ -55,3 +55,19 @@ cine/
 * Implement business logic (purchases, login).
 * Develop the GUI with JavaFX.
 * Integrate everything using MVC.
+
+
+### 📐 UML Diagram
+This diagram shows the class structure of the system.
+![UML Diagram](images/ticketManagerUML.png)
+
+### 🔐 Login Screen
+The interface where users can register or log into the system.
+![Login Screen](images/login.png)
+
+### 🎟️ Seat Selection View
+Displays the status of seats (free/occupied) in a screening room.
+![Seat View](images/election.png)
+
+
+
